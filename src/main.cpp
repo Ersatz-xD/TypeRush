@@ -39,7 +39,21 @@ vector<string> splitParagraphs (const string& filename){
     return paragraphs;
     
 }
+
+
+
+
 int main() {
-    
+    srand(time(0)); 
+    vector<string> paragraphs = splitParagraphs("..\\testParagraphs\\paragraphs.txt");
+    if (paragraphs.empty()) {
+        cerr << "No paragraphs found in the file." << endl;
+        return 1;
+    }
+
+    int randomIndex = rand() % paragraphs.size();
+    string randomParagraph = paragraphs[randomIndex];      
+    cout << "Randomly selected paragraph:\n" << randomParagraph << endl;    
+
     return 0;
 }
