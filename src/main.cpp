@@ -4,8 +4,35 @@
 #include <string>
 #include<cstdlib>
 #include <ctime>
+#include <thread>
+#include <chrono>
+#include <atomic>
+
 
 using namespace std;
+
+atomic<bool> timerStarted(false);
+atomic<bool> timesUp(false);
+
+//Countdown timer thread
+void startTimer(int duration) {
+    int remaining = duration;
+    while (remaining> 0 && !timesUp)
+    {
+        if (timerStarted){
+            cout << "\rTime left: " << remaining << " seconds";
+            this_thread::sleep_for(chrono::seconds(1));
+            remaining--;
+        }
+        else{
+            this_thread::sleep_for(chrono::milliseconds(100)); // wait for user to start typing
+        }
+    }
+    
+    timesUp = true;
+    cout << "\nTime's up!" << endl;
+}
+
 
 //split test paragraphs by blank lines 
 vector<string> loadParagraphs (const string& filename){
