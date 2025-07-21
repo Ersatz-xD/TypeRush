@@ -8,7 +8,7 @@
 using namespace std;
 
 //split test paragraphs by blank lines 
-vector<string> splitParagraphs (const string& filename){
+vector<string> loadParagraphs (const string& filename){
     ifstream file(filename);
     vector<string> paragraphs;
     string line, paragraph;
@@ -45,7 +45,7 @@ vector<string> splitParagraphs (const string& filename){
 
 int main() {
     srand(time(0)); 
-    vector<string> paragraphs = splitParagraphs("..\\testParagraphs\\paragraphs.txt");
+    vector<string> paragraphs = loadParagraphs("..\\testParagraphs\\paragraphs.txt");
     if (paragraphs.empty()) {
         cerr << "No paragraphs found in the file." << endl;
         return 1;
