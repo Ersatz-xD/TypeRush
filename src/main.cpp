@@ -90,8 +90,9 @@ double calculateAccuracy(const string& original, const string& typed) {
 
 //WPM calculation
 double calculateWPM(const string& typed, double timeInSeconds) {
+     if (typed.empty()) return 0.0;
+
     
-    // Standard: 5 characters = 1 word
     int characters = typed.length();
     double words = characters / 5.0;
     double minutes = timeInSeconds / 60.0;
@@ -99,6 +100,26 @@ double calculateWPM(const string& typed, double timeInSeconds) {
     return words / minutes;
 }
 
+//net wpm (includes accuracy)
+double calculateNetWPM(const string& original, const string& typed, double timeInSeconds) {
+    if (typed.empty()) return 0.0;
+    
+    int correct = 0;
+    int minLength = min(original.length(), typed.length());
+    
+    
+    for (int i = 0; i < minLength; i++) {
+        if (original[i] == typed[i]) {
+            correct++;
+        }
+    }
+    
+    
+    double correctWords = correct / 5.0;
+    double minutes = timeInSeconds / 60.0;
+    
+    return correctWords / minutes;
+}
 
 int main() {
     srand(time(0)); 
