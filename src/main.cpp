@@ -72,7 +72,21 @@ vector<string> loadParagraphs (const string& filename){
     
 }
 
-
+//accuracy calculation
+double calculateAccuracy(const string& original, const string& typed) {
+    if (typed.empty()) return 0.0;
+    
+    int correct = 0;
+    int minLength = min(original.length(), typed.length());
+    
+    for (int i = 0; i < minLength; i++) {
+        if (original[i] == typed[i]) {
+            correct++;
+        }
+    }
+    
+    return (double(correct) / typed.length()) * 100.0;
+}
 
 
 int main() {
