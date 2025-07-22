@@ -87,6 +87,25 @@ Typing text is loaded from:
 4. Final stats like **WPM**, **accuracy**, and **mistakes** are displayed.
 
 ---
+🧠 Sample Output
+```
+Typing Test - Chunk Mode Activated
+💡 Type each chunk. Timer starts on first key press. You have 100 seconds.
+
+🧩 Chunk 1/50:
+The train station was unusually quiet that morning. A thin layer of mist floated
+...
+
+==============================
+📝 TYPING TEST RESULTS 📝
+==============================
+📄 Characters typed     : 233
+🎯 Target characters     : 3997
+✅ Accuracy              : 81.1%
+🚀 Gross WPM (standard) : 28.0
+🧠 Net WPM (accuracy)   : 22.7
+```
+---
 
 ## 📌 Dependencies
 
@@ -109,6 +128,3 @@ Typing text is loaded from:
 
 
 ---
-
-Let me know if you'd like to add images, GIFs, badges (like build status or license), or Markdown tables to the README.
-```
