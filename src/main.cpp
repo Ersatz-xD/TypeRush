@@ -9,7 +9,7 @@
 #include <atomic>
 #include <conio.h>
 #include <filesystem>
-#include <iomanip> // for setprecision
+#include <iomanip>
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -133,13 +133,7 @@ void displayResults(const string& original, const string& typed, double timeElap
     cout << "🚀 Gross WPM (standard) : " << YELLOW << fixed << setprecision(1) << grossWPM << RESET << endl;
     cout << "🧠 Net WPM (accuracy)   : " << YELLOW << fixed << setprecision(1) << netWPM << RESET << endl;
 
-    int errors = 0;
-    int minLength = min(original.length(), typed.length());
-    for (int i = 0; i < minLength; i++) {
-        if (original[i] != typed[i]) errors++;
-    }
 
-    cout << "❌ Errors               : " << RED << errors << RESET << endl;
     cout << CYAN << string(30, '=') << RESET << endl;
 }
 
