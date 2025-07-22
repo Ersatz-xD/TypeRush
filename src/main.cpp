@@ -88,6 +88,17 @@ double calculateAccuracy(const string& original, const string& typed) {
     return (double(correct) / typed.length()) * 100.0;
 }
 
+//WPM calculation
+double calculateWPM(const string& typed, double timeInSeconds) {
+    
+    // Standard: 5 characters = 1 word
+    int characters = typed.length();
+    double words = characters / 5.0;
+    double minutes = timeInSeconds / 60.0;
+    
+    return words / minutes;
+}
+
 
 int main() {
     srand(time(0)); 
