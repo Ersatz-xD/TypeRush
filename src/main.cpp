@@ -188,9 +188,7 @@ int main() {
 
         if (ch == 8) { // Backspace key
             if (!userInput.empty()) {
-                userInput.pop_back(); // Remove last character
-
-                // Move cursor back, overwrite with space, then move back again
+                userInput.pop_back(); 
                 cout << "\b \b";
             }
         } else {
@@ -204,6 +202,8 @@ int main() {
     timesUp = true; 
     timerThread.join(); 
 
-    cout << "You typed: " << userInput << endl;
+    double timeElapsed = 10.0;
+    displayResults(randomParagraph, userInput, timeElapsed);
+
     return 0;
 }
