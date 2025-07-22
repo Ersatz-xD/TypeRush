@@ -121,6 +121,40 @@ double calculateNetWPM(const string& original, const string& typed, double timeI
     return correctWords / minutes;
 }
 
+// Display detailed results
+void displayResults(const string& original, const string& typed, double timeElapsed) {
+    cout << "\n" << string(10, '=') << endl;
+    cout << "TYPING TEST RESULTS" << endl;
+    cout << string(10, '=') << endl;
+    
+    
+    cout << "Characters typed: " << typed.length() << endl;
+    cout << "Target characters: " << original.length() << endl;
+    
+    
+    double accuracy = calculateAccuracy(original, typed);
+    cout << "Accuracy: " << fixed << setprecision(1) << accuracy << "%" << endl;
+    
+    
+    double grossWPM = calculateWPM(typed, timeElapsed);
+    double netWPM = calculateNetWPM(original, typed, timeElapsed);
+    
+    cout << "Gross WPM (standard): " << fixed << setprecision(1) << grossWPM << endl;
+    cout << "Net WPM (standard): " << fixed << setprecision(1) << netWPM << endl;
+    
+    int errors = 0;
+    int minLength = min(original.length(), typed.length());
+    for (int i = 0; i < minLength; i++) {
+        if (original[i] != typed[i]) {
+            errors++;
+        }
+    }
+    
+    cout << "Errors: " << errors << endl;
+    
+    
+}
+
 int main() {
     srand(time(0)); 
     fs::path filePath = fs::path(__FILE__).parent_path() / "../testParagraphs/paragraphs.txt";
